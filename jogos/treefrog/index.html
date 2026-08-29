@@ -1,103 +1,1244 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta charset="UTF-8">
+  <title>Tree Frog — VastaLuz Games</title>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+  <meta
+    name="description"
+    content="Tree Frog — um jogo rápido e divertido de reflexos, precisão e sobrevivência."
+  >
 
-    <meta
-        name="description"
-        content="Tree Frog — um jogo da VastaLuz Games."
-    >
+  <meta name="robots" content="index, follow">
 
-    <title>Tree Frog | VastaLuz Games</title>
+  <style>
+    :root {
+      --green-950: #0c2417;
+      --green-900: #123524;
+      --green-800: #174a30;
+      --green-700: #1f6540;
+      --green-600: #2e8b57;
+      --green-500: #43a866;
+      --green-400: #69c884;
 
+      --green-100: #e9f6ed;
+      --green-50: #f5fbf7;
+
+      --yellow: #f4c95d;
+      --red: #d95c5c;
+
+      --text: #243129;
+      --muted: #66736b;
+      --border: #dce8df;
+
+      --white: #ffffff;
+
+      --shadow:
+        0 18px 50px rgba(18, 53, 36, 0.09);
+
+      --shadow-large:
+        0 28px 80px rgba(18, 53, 36, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      line-height: 1.7;
+      color: var(--text);
+
+      background:
+        radial-gradient(
+          circle at 10% 0%,
+          rgba(67, 168, 102, 0.10),
+          transparent 30%
+        ),
+        linear-gradient(
+          180deg,
+          #f5fbf7 0%,
+          #ffffff 32%
+        );
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    /* ========================================
+       HEADER / HERO
+    ======================================== */
+
+    header {
+      position: relative;
+      overflow: hidden;
+
+      min-height: 650px;
+
+      display: flex;
+      align-items: center;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(12, 36, 23, 0.99),
+          rgba(31, 101, 64, 0.97)
+        );
+
+      color: white;
+
+      padding: 70px 20px 100px;
+    }
+
+    header::before,
+    header::after {
+      content: "";
+
+      position: absolute;
+
+      border-radius: 50%;
+
+      background: rgba(255, 255, 255, 0.055);
+
+      pointer-events: none;
+    }
+
+    header::before {
+      width: 480px;
+      height: 480px;
+
+      right: -180px;
+      top: -230px;
+    }
+
+    header::after {
+      width: 330px;
+      height: 330px;
+
+      left: -170px;
+      bottom: -190px;
+    }
+
+    .leaf-decoration {
+      position: absolute;
+
+      color: rgba(255, 255, 255, 0.08);
+
+      font-size: 9rem;
+
+      user-select: none;
+
+      pointer-events: none;
+    }
+
+    .leaf-one {
+      right: 10%;
+      bottom: 8%;
+      transform: rotate(-15deg);
+    }
+
+    .leaf-two {
+      left: 4%;
+      top: 12%;
+      font-size: 6rem;
+      transform: rotate(20deg);
+    }
+
+    .hero {
+      position: relative;
+      z-index: 2;
+
+      width: min(1120px, 100%);
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.25fr)
+        minmax(280px, 0.75fr);
+
+      gap: 70px;
+
+      align-items: center;
+    }
+
+    /* ========================================
+       BRAND
+    ======================================== */
+
+    .brand {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      margin-bottom: 28px;
+
+      color: rgba(255, 255, 255, 0.92);
+
+      font-size: 1rem;
+
+      font-weight: 700;
+
+      letter-spacing: 0.02em;
+    }
+
+    .brand-icon {
+      display: grid;
+
+      place-items: center;
+
+      width: 42px;
+      height: 42px;
+
+      border-radius: 12px;
+
+      background: rgba(255, 255, 255, 0.13);
+
+      font-size: 1.3rem;
+    }
+
+    /* ========================================
+       HERO TEXT
+    ======================================== */
+
+    .hero h1 {
+      display: flex;
+
+      align-items: center;
+
+      gap: 15px;
+
+      font-size: clamp(3rem, 7vw, 5.5rem);
+
+      line-height: 0.98;
+
+      letter-spacing: -0.055em;
+
+      margin-bottom: 25px;
+    }
+
+    .hero-frog {
+      font-size: 0.72em;
+
+      filter:
+        drop-shadow(
+          0 10px 15px rgba(0, 0, 0, 0.18)
+        );
+    }
+
+    .hero-subtitle {
+      max-width: 680px;
+
+      color: rgba(255, 255, 255, 0.87);
+
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
+
+      line-height: 1.65;
+
+      margin-bottom: 32px;
+    }
+
+    /* ========================================
+       BUTTONS
+    ======================================== */
+
+    .hero-actions {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      min-height: 50px;
+
+      padding: 12px 21px;
+
+      border-radius: 12px;
+
+      font-weight: 750;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+
+      text-decoration: none;
+    }
+
+    .button-primary {
+      color: var(--green-900);
+
+      background: #ffffff;
+
+      box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .button-primary:hover {
+      background: #f1fff5;
+
+      box-shadow:
+        0 14px 34px rgba(0, 0, 0, 0.19);
+    }
+
+    .button-secondary {
+      color: white;
+
+      border: 1px solid rgba(255, 255, 255, 0.22);
+
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .button-secondary:hover {
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    /* ========================================
+       GAME CARD
+    ======================================== */
+
+    .game-card {
+      position: relative;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      min-height: 390px;
+
+      padding: 35px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+      border-radius: 30px;
+
+      background:
+        radial-gradient(
+          circle at 50% 30%,
+          rgba(105, 200, 132, 0.18),
+          transparent 52%
+        ),
+        rgba(255, 255, 255, 0.055);
+
+      box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.18);
+
+      overflow: hidden;
+    }
+
+    .game-card::before {
+      content: "";
+
+      position: absolute;
+
+      width: 250px;
+      height: 250px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(105, 200, 132, 0.28),
+          transparent 68%
+        );
+    }
+
+    .frog-display {
+      position: relative;
+
+      z-index: 1;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      gap: 20px;
+    }
+
+    .frog {
+      font-size: 9rem;
+
+      line-height: 1;
+
+      filter:
+        drop-shadow(
+          0 22px 15px rgba(0, 0, 0, 0.18)
+        );
+
+      animation:
+        frogJump 2.5s ease-in-out infinite;
+    }
+
+    .game-creatures {
+      display: flex;
+
+      align-items: center;
+
+      gap: 18px;
+
+      font-size: 2.1rem;
+    }
+
+    .game-creatures span:nth-child(1) {
+      animation: bugMove 2s ease-in-out infinite;
+    }
+
+    .game-creatures span:nth-child(2) {
+      animation: bugMove 2s ease-in-out 0.3s infinite;
+    }
+
+    .game-creatures span:nth-child(3) {
+      animation: centipedeMove 2.8s ease-in-out infinite;
+    }
+
+    .game-card-label {
+      color: rgba(255, 255, 255, 0.7);
+
+      font-size: 0.85rem;
+
+      font-weight: 650;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.12em;
+    }
+
+    /* ========================================
+       MAIN
+    ======================================== */
+
+    main {
+      position: relative;
+
+      width: min(1120px, calc(100% - 32px));
+
+      margin: -55px auto 70px;
+
+      z-index: 3;
+    }
+
+    .content-card {
+      background: var(--white);
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 24px;
+
+      box-shadow: var(--shadow-large);
+
+      overflow: hidden;
+    }
+
+    /* ========================================
+       DESCRIPTION
+    ======================================== */
+
+    .description {
+      padding: clamp(35px, 6vw, 65px);
+    }
+
+    .section-label {
+      display: inline-block;
+
+      margin-bottom: 12px;
+
+      color: var(--green-600);
+
+      font-size: 0.78rem;
+
+      font-weight: 800;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.12em;
+    }
+
+    .description h2 {
+      max-width: 800px;
+
+      color: var(--green-900);
+
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+
+      line-height: 1.18;
+
+      letter-spacing: -0.035em;
+
+      margin-bottom: 22px;
+    }
+
+    .description p {
+      max-width: 850px;
+
+      color: #4f5d55;
+
+      font-size: 1.05rem;
+
+      margin-bottom: 18px;
+    }
+
+    /* ========================================
+       GAMEPLAY
+    ======================================== */
+
+    .gameplay {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      border-top:
+        1px solid var(--border);
+    }
+
+    .gameplay-item {
+      padding: 34px 28px;
+
+      text-align: center;
+
+      border-right:
+        1px solid var(--border);
+    }
+
+    .gameplay-item:last-child {
+      border-right: none;
+    }
+
+    .gameplay-icon {
+      display: grid;
+
+      place-items: center;
+
+      width: 62px;
+      height: 62px;
+
+      margin: 0 auto 16px;
+
+      border-radius: 18px;
+
+      background: var(--green-50);
+
+      font-size: 1.8rem;
+    }
+
+    .gameplay-item h3 {
+      color: var(--green-900);
+
+      font-size: 1.05rem;
+
+      margin-bottom: 6px;
+    }
+
+    .gameplay-item p {
+      color: var(--muted);
+
+      font-size: 0.9rem;
+
+      line-height: 1.55;
+    }
+
+    /* ========================================
+       CTA
+    ======================================== */
+
+    .cta {
+      margin-top: 28px;
+
+      padding:
+        clamp(40px, 6vw, 65px);
+
+      text-align: center;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--green-900),
+          var(--green-700)
+        );
+    }
+
+    .cta-frog {
+      display: block;
+
+      margin-bottom: 12px;
+
+      font-size: 3rem;
+    }
+
+    .cta h2 {
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+
+      line-height: 1.15;
+
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      max-width: 600px;
+
+      margin:
+        0 auto 25px;
+
+      color:
+        rgba(255, 255, 255, 0.78);
+    }
+
+    .button-disabled {
+      cursor: not-allowed;
+
+      color: rgba(255, 255, 255, 0.75);
+
+      border:
+        1px solid rgba(255, 255, 255, 0.16);
+
+      background:
+        rgba(255, 255, 255, 0.08);
+
+      box-shadow: none;
+    }
+
+    .button-disabled:hover {
+      transform: none;
+
+      background:
+        rgba(255, 255, 255, 0.08);
+    }
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+
+    footer {
+      padding: 0 20px 45px;
+
+      text-align: center;
+
+      color: var(--muted);
+
+      font-size: 0.9rem;
+    }
+
+    .footer-brand {
+      margin-bottom: 15px;
+
+      color: var(--green-800);
+
+      font-weight: 800;
+
+      font-size: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      justify-content: center;
+
+      gap: 7px 20px;
+
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      color: var(--green-700);
+
+      font-weight: 600;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .copyright {
+      color: #7b857f;
+
+      font-size: 0.82rem;
+    }
+
+    /* ========================================
+       ANIMATIONS
+    ======================================== */
+
+    @keyframes frogJump {
+
+      0%,
+      100% {
+        transform:
+          translateY(5px)
+          rotate(-2deg);
+      }
+
+      50% {
+        transform:
+          translateY(-13px)
+          rotate(2deg);
+      }
+    }
+
+    @keyframes bugMove {
+
+      0%,
+      100% {
+        transform:
+          translateY(0)
+          rotate(-4deg);
+      }
+
+      50% {
+        transform:
+          translateY(-7px)
+          rotate(4deg);
+      }
+    }
+
+    @keyframes centipedeMove {
+
+      0%,
+      100% {
+        transform:
+          translateX(0);
+      }
+
+      50% {
+        transform:
+          translateX(-8px);
+      }
+    }
+
+    /* ========================================
+       RESPONSIVE
+    ======================================== */
+
+    @media (max-width: 850px) {
+
+      header {
+        min-height: auto;
+
+        padding:
+          55px 20px 105px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+
+        text-align: center;
+      }
+
+      .brand {
+        justify-content: center;
+      }
+
+      .hero h1 {
+        justify-content: center;
+      }
+
+      .hero-subtitle {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .game-card {
+        min-height: 300px;
+
+        max-width: 500px;
+
+        width: 100%;
+
+        margin: auto;
+      }
+
+      .frog {
+        font-size: 7rem;
+      }
+
+      .gameplay {
+        grid-template-columns: 1fr;
+      }
+
+      .gameplay-item {
+        border-right: none;
+
+        border-bottom:
+          1px solid var(--border);
+      }
+
+      .gameplay-item:last-child {
+        border-bottom: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+
+      header {
+        padding:
+          45px 18px 90px;
+      }
+
+      .hero h1 {
+        font-size: 3.1rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      main {
+        width:
+          calc(100% - 20px);
+
+        margin-top: -42px;
+      }
+
+      .content-card {
+        border-radius: 18px;
+      }
+
+      .description {
+        padding: 32px 22px;
+      }
+
+      .game-card {
+        min-height: 260px;
+
+        border-radius: 22px;
+      }
+
+      .frog {
+        font-size: 6rem;
+      }
+
+      .game-creatures {
+        font-size: 1.7rem;
+      }
+
+      .cta {
+        margin-top: 20px;
+
+        border-radius: 18px;
+
+        padding:
+          38px 22px;
+      }
+
+      .footer-links {
+        flex-direction: column;
+
+        gap: 8px;
+      }
+    }
+
+    /* ========================================
+       REDUCED MOTION
+    ======================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <header>
+  <!-- ========================================
+       HERO
+  ======================================== -->
 
-        <a href="/vastaluz-games/">
-            ✦ VastaLuz
+  <header>
+
+    <span
+      class="leaf-decoration leaf-one"
+      aria-hidden="true"
+    >
+      🍃
+    </span>
+
+    <span
+      class="leaf-decoration leaf-two"
+      aria-hidden="true"
+    >
+      🌿
+    </span>
+
+    <div class="hero">
+
+      <div class="hero-content">
+
+        <a
+          class="brand"
+          href="/vastaluz-games/"
+          aria-label="VastaLuz Games"
+        >
+
+          <span
+            class="brand-icon"
+            aria-hidden="true"
+          >
+            ✦
+          </span>
+
+          <span>
+            VastaLuz Games
+          </span>
+
         </a>
 
-    </header>
+        <h1>
+          <span
+            class="hero-frog"
+            aria-hidden="true"
+          >
+            🐸
+          </span>
+
+          <span>
+            Tree Frog
+          </span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Entre no mundo do Tree Frog, um jogo rápido
+          e divertido de reflexos, precisão e
+          sobrevivência!
+        </p>
+
+        <div class="hero-actions">
+
+          <a
+            class="button button-primary"
+            href="#jogar"
+          >
+            🐸 Conheça o jogo
+          </a>
+
+          <a
+            class="button button-secondary"
+            href="#informacoes"
+          >
+            Saiba mais
+          </a>
+
+        </div>
+
+      </div>
 
 
-    <main>
+      <!-- GAME VISUAL -->
 
-        <h1>🐸 Tree Frog</h1>
+      <div
+        class="game-card"
+        aria-label="Ilustração do jogo Tree Frog"
+      >
+
+        <div class="frog-display">
+
+          <div
+            class="frog"
+            aria-hidden="true"
+          >
+            🐸
+          </div>
+
+          <div
+            class="game-creatures"
+            aria-hidden="true"
+          >
+            <span>🪲</span>
+            <span>🪲</span>
+            <span>🐛</span>
+          </div>
+
+          <div class="game-card-label">
+            Pule · Capture · Fuja
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- ========================================
+       MAIN
+  ======================================== -->
+
+  <main id="informacoes">
+
+    <div class="content-card">
+
+
+      <!-- DESCRIPTION -->
+
+      <section
+        class="description"
+        id="jogar"
+      >
+
+        <span class="section-label">
+          Sobre o jogo
+        </span>
+
+        <h2>
+          Reflexos rápidos. Precisão.
+          Sobrevivência.
+        </h2>
 
         <p>
-            Um novo jogo da VastaLuz Games.
+          Você controla um sapo ágil que precisa
+          pular e capturar o maior número possível
+          de besouros enquanto tenta escapar de uma
+          perigosa centopeia venenosa.
         </p>
 
         <p>
-            Em breve você poderá jogar Tree Frog
-            diretamente nesta página.
+          Cada besouro capturado aumenta sua pontuação
+          — mas não perca tempo: a centopeia também
+          está atrás de você!
         </p>
-
-
-        <section>
-
-            <h2>Tree Frog</h2>
-
-            <p>
-                Prepare-se para uma nova aventura.
-            </p>
-
-            <button>
-                Jogar
-            </button>
-
-        </section>
-
-
-        <section>
-
-            <h2>Informações</h2>
-
-            <ul>
-
-                <li>
-                    <a href="privacidade/">
-                        Política de Privacidade
-                    </a>
-                </li>
-
-                <li>
-                    <a href="termos/">
-                        Termos de Serviço
-                    </a>
-                </li>
-
-                <li>
-                    <a href="contato/">
-                        Suporte
-                    </a>
-                </li>
-
-            </ul>
-
-        </section>
-
-    </main>
-
-
-    <footer>
 
         <p>
-            © 2026 VastaLuz Games
+          Clique e arraste para movimentar o sapo,
+          pule no momento certo e capture os besouros
+          antes que a centopeia chegue até eles.
+          Quanto mais besouros você capturar, maior
+          será sua pontuação.
         </p>
 
-    </footer>
+        <p>
+          Mas cuidado:
+          <strong>
+            se o sapo tocar na centopeia, é Game Over!
+          </strong>
+        </p>
+
+      </section>
+
+
+      <!-- GAMEPLAY -->
+
+      <section
+        class="gameplay"
+        aria-label="Como jogar"
+      >
+
+        <div class="gameplay-item">
+
+          <div
+            class="gameplay-icon"
+            aria-hidden="true"
+          >
+            🐸
+          </div>
+
+          <h3>
+            Pule
+          </h3>
+
+          <p>
+            Controle o sapo e pule no momento
+            certo para escapar do perigo.
+          </p>
+
+        </div>
+
+
+        <div class="gameplay-item">
+
+          <div
+            class="gameplay-icon"
+            aria-hidden="true"
+          >
+            🪲
+          </div>
+
+          <h3>
+            Capture
+          </h3>
+
+          <p>
+            Capture o maior número de besouros
+            possível para aumentar sua pontuação.
+          </p>
+
+        </div>
+
+
+        <div class="gameplay-item">
+
+          <div
+            class="gameplay-icon"
+            aria-hidden="true"
+          >
+            🐛
+          </div>
+
+          <h3>
+            Fuja
+          </h3>
+
+          <p>
+            Evite a perigosa centopeia e
+            sobreviva pelo maior tempo possível.
+          </p>
+
+        </div>
+
+      </section>
+
+
+    </div>
+
+
+    <!-- ======================================
+         CTA
+    ======================================= -->
+
+    <section
+      class="cta"
+      aria-label="Jogar Tree Frog"
+    >
+
+      <span
+        class="cta-frog"
+        aria-hidden="true"
+      >
+        🐸
+      </span>
+
+      <h2>
+        Prepare-se para uma nova aventura.
+      </h2>
+
+      <p>
+        Em breve você poderá jogar Tree Frog
+        diretamente nesta página.
+      </p>
+
+      <span
+        class="button button-disabled"
+        aria-disabled="true"
+      >
+        🎮 Jogar — Em breve
+      </span>
+
+    </section>
+
+  </main>
+
+
+  <!-- ========================================
+       FOOTER
+  ========================================= -->
+
+  <footer>
+
+    <div class="footer-brand">
+      ✦ VastaLuz Games
+    </div>
+
+    <nav
+      class="footer-links"
+      id="links"
+      aria-label="Links do site"
+    >
+
+      <a href="/vastaluz-games/">
+        VastaLuz Games
+      </a>
+
+      <a href="privacidade/">
+        Política de Privacidade
+      </a>
+
+      <a href="termos/">
+        Termos de Serviço
+      </a>
+
+      <a href="mailto:devmodehere@gmail.com">
+        Suporte
+      </a>
+
+    </nav>
+
+    <div class="copyright">
+      © 2026 VastaLuz Games
+    </div>
+
+  </footer>
+
 
 </body>
-
 </html>
