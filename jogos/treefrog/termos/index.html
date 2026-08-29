@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Termos de Serviço — Tree Frog</title>
+  <meta name="description" content="Termos de Serviço do jogo Tree Frog.">
+  <meta name="robots" content="index, follow">
+
+  <style>
+    :root {
+      --green-900: #123524;
+      --green-800: #174a30;
+      --green-700: #1f6540;
+      --green-600: #2e8b57;
+      --green-500: #43a866;
+      --green-100: #e9f6ed;
+      --green-50: #f5fbf7;
+
+      --text: #243129;
+      --muted: #66736b;
+      --border: #dce8df;
+      --white: #ffffff;
+      --shadow: 0 18px 50px rgba(18, 53, 36, 0.09);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+      line-height: 1.7;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(67, 168, 102, 0.10), transparent 30%),
+        linear-gradient(180deg, #f5fbf7 0%, #ffffff 30%);
+    }
+
+    a {
+      color: var(--green-700);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Header */
+    header {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(18, 53, 36, 0.98), rgba(31, 101, 64, 0.96));
+      color: white;
+      padding: 72px 20px 90px;
+    }
+
+    header::before,
+    header::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      pointer-events: none;
+    }
+
+    header::before {
+      width: 320px;
+      height: 320px;
+      right: -100px;
+      top: -130px;
+    }
+
+    header::after {
+      width: 220px;
+      height: 220px;
+      left: -90px;
+      bottom: -130px;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .frog-icon {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.14);
+      font-size: 1.65rem;
+    }
+
+    header h1 {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 18px;
+    }
+
+    header p {
+      max-width: 700px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 1.08rem;
+    }
+
+    .updated {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 7px 13px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.88rem;
+    }
+
+    /* Layout */
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: -42px auto 70px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* Navigation */
+    .toc {
+      position: sticky;
+      top: 24px;
+      padding: 22px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .toc-title {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 800;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .toc ul {
+      list-style: none;
+    }
+
+    .toc li + li {
+      margin-top: 4px;
+    }
+
+    .toc a {
+      display: block;
+      padding: 7px 9px;
+      border-radius: 8px;
+      color: #526057;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      transition: 0.2s ease;
+    }
+
+    .toc a:hover {
+      color: var(--green-700);
+      background: var(--green-50);
+      text-decoration: none;
+    }
+
+    /* Content */
+    main {
+      min-width: 0;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: clamp(28px, 5vw, 58px);
+    }
+
+    .intro {
+      padding: 22px 24px;
+      margin-bottom: 38px;
+      border-left: 4px solid var(--green-500);
+      border-radius: 0 12px 12px 0;
+      background: var(--green-50);
+      color: #435149;
+    }
+
+    section {
+      scroll-margin-top: 25px;
+    }
+
+    section + section {
+      margin-top: 42px;
+      padding-top: 42px;
+      border-top: 1px solid var(--border);
+    }
+
+    h2 {
+      color: var(--green-900);
+      font-size: clamp(1.35rem, 3vw, 1.7rem);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      margin-bottom: 15px;
+    }
+
+    h2::before {
+      content: "";
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      margin: 0 9px 3px 0;
+      border-radius: 50%;
+      background: var(--green-500);
+    }
+
+    p {
+      margin-bottom: 14px;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    ul {
+      margin: 14px 0 0 22px;
+    }
+
+    li {
+      margin-bottom: 9px;
+      padding-left: 4px;
+    }
+
+    li::marker {
+      color: var(--green-600);
+    }
+
+    .contact-card {
+      margin-top: 18px;
+      padding: 22px;
+      background: linear-gradient(135deg, var(--green-50), #fff);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .contact-card strong {
+      color: var(--green-900);
+    }
+
+    .email {
+      display: inline-block;
+      margin-top: 5px;
+      font-weight: 700;
+      word-break: break-word;
+    }
+
+    /* Footer */
+    footer {
+      padding: 30px 20px 45px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer strong {
+      color: var(--green-800);
+    }
+
+    /* Responsive */
+    @media (max-width: 820px) {
+      header {
+        padding: 52px 20px 78px;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .toc {
+        position: static;
+      }
+
+      .toc ul {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4px;
+      }
+
+      .toc li + li {
+        margin-top: 0;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page {
+        width: min(100% - 20px, 1120px);
+        margin-top: -32px;
+      }
+
+      main {
+        padding: 25px 20px;
+        border-radius: 17px;
+      }
+
+      .toc {
+        padding: 17px;
+      }
+
+      .toc ul {
+        display: block;
+      }
+
+      .toc li + li {
+        margin-top: 3px;
+      }
+
+      section + section {
+        margin-top: 32px;
+        padding-top: 32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="header-content">
+      <div class="brand">
+        <div class="frog-icon" aria-hidden="true">🐸</div>
+        <span>Tree Frog</span>
+      </div>
+
+      <h1>Termos de Serviço</h1>
+
+      <p>
+        Estes Termos de Serviço estabelecem as regras para utilização
+        do jogo Tree Frog e de seus recursos.
+      </p>
+
+      <span class="updated">Última atualização: 27 de agosto de 2026</span>
+    </div>
+  </header>
+
+  <div class="page">
+    <div class="layout">
+
+      <nav class="toc" aria-label="Índice dos Termos de Serviço">
+        <div class="toc-title">Neste documento</div>
+
+        <ul>
+          <li><a href="#sobre">Sobre o jogo</a></li>
+          <li><a href="#uso">Uso do jogo</a></li>
+          <li><a href="#atualizacoes">Atualizações e alterações</a></li>
+          <li><a href="#anuncios">Anúncios</a></li>
+          <li><a href="#compras">Compras e itens virtuais</a></li>
+          <li><a href="#propriedade">Propriedade intelectual</a></li>
+          <li><a href="#terceiros">Conteúdo de terceiros</a></li>
+          <li><a href="#disponibilidade">Disponibilidade</a></li>
+          <li><a href="#responsabilidade">Responsabilidade</a></li>
+          <li><a href="#alteracoes">Alterações dos Termos</a></li>
+          <li><a href="#privacidade">Privacidade</a></li>
+          <li><a href="#encerramento">Encerramento</a></li>
+          <li><a href="#legislacao">Legislação aplicável</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+
+      <main>
+
+        <div class="intro">
+          Bem-vindo ao <strong>Tree Frog</strong>! Ao instalar, acessar
+          ou jogar o Tree Frog, você declara que leu e concorda com
+          estes Termos de Serviço.
+        </div>
+
+        <section id="sobre">
+          <h2>Sobre o jogo</h2>
+          <p>
+            O Tree Frog é um jogo disponibilizado aos usuários de forma
+            gratuita. Atualmente, o acesso ao jogo não exige pagamento.
+            No entanto, futuramente o jogo poderá incluir recursos
+            adicionais, como anúncios, itens cosméticos, skins e outras
+            funcionalidades.
+          </p>
+        </section>
+
+        <section id="uso">
+          <h2>Uso do jogo</h2>
+          <p>
+            Você concorda em utilizar o Tree Frog de maneira adequada e
+            de acordo com estes Termos. É proibido:
+          </p>
+
+          <ul>
+            <li>utilizar trapaças, hacks, bots ou softwares que alterem o funcionamento do jogo;</li>
+            <li>explorar falhas do jogo com a intenção de obter vantagens indevidas;</li>
+            <li>tentar interferir no funcionamento dos servidores ou sistemas relacionados ao jogo;</li>
+            <li>utilizar o jogo para atividades ilegais;</li>
+            <li>tentar obter acesso não autorizado a contas, sistemas ou dados de outros usuários;</li>
+            <li>utilizar métodos que prejudiquem intencionalmente a experiência de outros jogadores.</li>
+          </ul>
+
+          <p>
+            Podemos tomar medidas contra usuários que violem estas
+            regras, incluindo restrições ou suspensão do acesso ao jogo.
+          </p>
+        </section>
+
+        <section id="atualizacoes">
+          <h2>Atualizações e alterações</h2>
+          <p>
+            O Tree Frog poderá receber atualizações, correções, novos
+            recursos, alterações de conteúdo e melhorias.
+          </p>
+
+          <p>
+            Podemos modificar, adicionar ou remover funcionalidades do
+            jogo a qualquer momento, inclusive por motivos técnicos,
+            de segurança, equilíbrio, manutenção ou desenvolvimento.
+            Também podemos interromper temporária ou permanentemente
+            determinados recursos ou o próprio jogo.
+          </p>
+        </section>
+
+        <section id="anuncios">
+          <h2>Anúncios</h2>
+          <p>
+            Atualmente, o Tree Frog pode não apresentar anúncios. No
+            futuro, poderemos incluir publicidade no jogo.
+          </p>
+
+          <p>
+            Os anúncios poderão ser fornecidos por empresas e serviços
+            de publicidade de terceiros. A disponibilidade e o formato
+            dos anúncios poderão mudar ao longo do tempo.
+          </p>
+
+          <p>
+            Quando anúncios forem implementados, informações adicionais
+            sobre o tratamento de dados relacionado à publicidade poderão
+            ser apresentadas na Política de Privacidade do Tree Frog.
+          </p>
+        </section>
+
+        <section id="compras">
+          <h2>Compras e itens virtuais</h2>
+          <p>
+            Atualmente, o Tree Frog não exige compras para ser jogado.
+            No futuro, poderemos disponibilizar itens virtuais, incluindo
+            skins, personalizações ou outros conteúdos cosméticos que
+            poderão ser adquiridos mediante pagamento.
+          </p>
+
+          <p>Os itens virtuais:</p>
+
+          <ul>
+            <li>não representam dinheiro real;</li>
+            <li>não podem ser convertidos em dinheiro;</li>
+            <li>não podem ser vendidos ou transferidos fora dos sistemas autorizados pelo jogo;</li>
+            <li>podem estar sujeitos a regras e condições específicas no momento da compra.</li>
+          </ul>
+
+          <p>
+            Os preços, disponibilidade e características dos itens
+            poderão ser alterados ou removidos no futuro. Quando houver
+            compras disponíveis, as condições aplicáveis serão
+            apresentadas antes da confirmação da compra.
+          </p>
+        </section>
+
+        <section id="propriedade">
+          <h2>Propriedade intelectual</h2>
+          <p>
+            O Tree Frog, incluindo seu nome, código, gráficos,
+            personagens, imagens, sons, músicas, textos, elementos
+            visuais e demais conteúdos relacionados ao jogo, pertence
+            ao desenvolvedor ou é utilizado sob autorização.
+          </p>
+
+          <p>
+            Você não recebe, por meio destes Termos, qualquer direito
+            de propriedade sobre o jogo ou seus conteúdos.
+          </p>
+
+          <p>
+            Não é permitido copiar, modificar, distribuir, vender,
+            reproduzir ou explorar comercialmente os elementos do
+            Tree Frog sem autorização, exceto quando permitido pela
+            legislação aplicável.
+          </p>
+        </section>
+
+        <section id="terceiros">
+          <h2>Conteúdo de terceiros</h2>
+          <p>
+            O jogo poderá utilizar serviços, ferramentas, plataformas
+            ou conteúdos fornecidos por terceiros.
+          </p>
+
+          <p>
+            Esses serviços podem possuir seus próprios termos de uso
+            e políticas de privacidade. O uso desses serviços poderá
+            estar sujeito às condições estabelecidas por seus
+            respectivos fornecedores.
+          </p>
+        </section>
+
+        <section id="disponibilidade">
+          <h2>Disponibilidade do jogo</h2>
+          <p>
+            Embora sejam realizados esforços para manter o Tree Frog
+            funcionando corretamente, não podemos garantir que o jogo
+            estará disponível continuamente ou sem erros.
+          </p>
+
+          <p>
+            O jogo poderá ficar temporariamente indisponível devido a
+            manutenção, atualizações, problemas técnicos, falhas de
+            serviços de terceiros ou outras circunstâncias.
+          </p>
+        </section>
+
+        <section id="responsabilidade">
+          <h2>Limitação de responsabilidade</h2>
+          <p>
+            Na medida permitida pela legislação aplicável, o
+            desenvolvedor não será responsável por perdas ou danos
+            decorrentes da impossibilidade de utilização do jogo,
+            interrupções, falhas técnicas ou problemas causados por
+            serviços de terceiros.
+          </p>
+
+          <p>
+            Nada nestes Termos tem a intenção de excluir direitos que
+            não possam ser excluídos ou limitados pela legislação
+            aplicável.
+          </p>
+        </section>
+
+        <section id="alteracoes">
+          <h2>Alterações destes Termos</h2>
+          <p>
+            Estes Termos de Serviço poderão ser atualizados
+            periodicamente.
+          </p>
+
+          <p>
+            Quando houver alterações relevantes, poderemos informar
+            os usuários por meios apropriados, quando necessário.
+            A versão mais recente dos Termos estará disponível na
+            página oficial do Tree Frog.
+          </p>
+        </section>
+
+        <section id="privacidade">
+          <h2>Privacidade</h2>
+          <p>
+            O tratamento de informações relacionadas ao uso do Tree
+            Frog é explicado na Política de Privacidade do jogo.
+          </p>
+
+          <p>
+            Recomendamos que você leia a Política de Privacidade para
+            entender quais informações podem ser coletadas, utilizadas
+            e compartilhadas.
+          </p>
+        </section>
+
+        <section id="encerramento">
+          <h2>Encerramento</h2>
+          <p>
+            Podemos restringir ou encerrar o acesso de um usuário ao
+            Tree Frog caso ele viole estes Termos ou utilize o jogo
+            de maneira inadequada ou ilegal.
+          </p>
+
+          <p>
+            Também poderemos encerrar ou modificar o jogo ou
+            determinados recursos a qualquer momento, respeitando os
+            direitos previstos pela legislação aplicável.
+          </p>
+        </section>
+
+        <section id="legislacao">
+          <h2>Legislação aplicável</h2>
+          <p>
+            Estes Termos serão interpretados de acordo com a legislação
+            aplicável.
+          </p>
+
+          <p>
+            Nada nestes Termos limita os direitos que o usuário possui
+            de acordo com as leis de proteção ao consumidor e demais
+            normas obrigatórias aplicáveis.
+          </p>
+        </section>
+
+        <section id="contato">
+          <h2>Contato</h2>
+
+          <p>
+            Caso tenha dúvidas, sugestões ou questões relacionadas a
+            estes Termos de Serviço, entre em contato por meio do canal
+            oficial disponibilizado pelo desenvolvedor do Tree Frog.
+          </p>
+
+          <div class="contact-card">
+            <p><strong>Desenvolvedor:</strong> Vastaluz</p>
+            <p>
+              <strong>E-mail:</strong><br>
+              <a class="email" href="mailto:devmodehere@gmail.com">
+                devmodehere@gmail.com
+              </a>
+            </p>
+          </div>
+
+          <p style="margin-top: 24px;">
+            Estes Termos de Serviço entram em vigor a partir da data
+            indicada no início deste documento.
+          </p>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <footer>
+    <strong>Tree Frog</strong> · Termos de Serviço
+    <br>
+    Última atualização: 27 de agosto de 2026
+  </footer>
+
+</body>
+</html>
