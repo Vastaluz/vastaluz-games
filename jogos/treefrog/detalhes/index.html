@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Detalhes e Exclusão de Conta — Tree Frog</title>
+
+  <meta
+    name="description"
+    content="Detalhes do jogo Tree Frog e informações sobre exclusão de conta e dados."
+  >
+
+  <meta name="robots" content="index, follow">
+
+  <style>
+    :root {
+      --green-900: #123524;
+      --green-800: #174a30;
+      --green-700: #1f6540;
+      --green-600: #2e8b57;
+      --green-500: #43a866;
+
+      --green-100: #e9f6ed;
+      --green-50: #f5fbf7;
+
+      --text: #243129;
+      --muted: #66736b;
+      --border: #dce8df;
+      --white: #ffffff;
+
+      --shadow: 0 18px 50px rgba(18, 53, 36, 0.09);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      line-height: 1.7;
+      color: var(--text);
+
+      background:
+        radial-gradient(
+          circle at 10% 0%,
+          rgba(67, 168, 102, 0.10),
+          transparent 30%
+        ),
+        linear-gradient(
+          180deg,
+          #f5fbf7 0%,
+          #ffffff 30%
+        );
+    }
+
+    a {
+      color: var(--green-700);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(18, 53, 36, 0.98),
+          rgba(31, 101, 64, 0.96)
+        );
+
+      color: white;
+
+      padding: 72px 20px 90px;
+    }
+
+    header::before,
+    header::after {
+      content: "";
+
+      position: absolute;
+
+      border-radius: 50%;
+
+      background: rgba(255, 255, 255, 0.06);
+
+      pointer-events: none;
+    }
+
+    header::before {
+      width: 320px;
+      height: 320px;
+
+      right: -100px;
+      top: -130px;
+    }
+
+    header::after {
+      width: 220px;
+      height: 220px;
+
+      left: -90px;
+      bottom: -130px;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+
+      max-width: 900px;
+
+      margin: auto;
+    }
+
+    .brand {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      margin-bottom: 28px;
+
+      font-size: 1.05rem;
+
+      font-weight: 700;
+
+      letter-spacing: 0.02em;
+    }
+
+    .frog-icon {
+      display: grid;
+
+      place-items: center;
+
+      width: 48px;
+      height: 48px;
+
+      border-radius: 14px;
+
+      background: rgba(255, 255, 255, 0.14);
+
+      font-size: 1.65rem;
+    }
+
+    header h1 {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+
+      line-height: 1.1;
+
+      letter-spacing: -0.04em;
+
+      margin-bottom: 18px;
+    }
+
+    header p {
+      max-width: 720px;
+
+      color: rgba(255, 255, 255, 0.82);
+
+      font-size: 1.08rem;
+    }
+
+    .updated {
+      display: inline-block;
+
+      margin-top: 24px;
+
+      padding: 7px 13px;
+
+      border: 1px solid rgba(255, 255, 255, 0.18);
+
+      border-radius: 999px;
+
+      background: rgba(255, 255, 255, 0.08);
+
+      color: rgba(255, 255, 255, 0.9);
+
+      font-size: 0.88rem;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+
+      margin: -42px auto 70px;
+
+      position: relative;
+
+      z-index: 2;
+    }
+
+    .layout {
+      display: grid;
+
+      grid-template-columns: 260px minmax(0, 1fr);
+
+      gap: 28px;
+
+      align-items: start;
+    }
+
+    .toc {
+      position: sticky;
+
+      top: 24px;
+
+      padding: 22px;
+
+      background: rgba(255, 255, 255, 0.95);
+
+      border: 1px solid var(--border);
+
+      border-radius: 18px;
+
+      box-shadow: var(--shadow);
+    }
+
+    .toc-title {
+      font-size: 0.82rem;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.1em;
+
+      font-weight: 800;
+
+      color: var(--muted);
+
+      margin-bottom: 12px;
+    }
+
+    .toc ul {
+      list-style: none;
+    }
+
+    .toc li + li {
+      margin-top: 4px;
+    }
+
+    .toc a {
+      display: block;
+
+      padding: 7px 9px;
+
+      border-radius: 8px;
+
+      color: #526057;
+
+      font-size: 0.9rem;
+
+      line-height: 1.4;
+
+      transition: 0.2s ease;
+    }
+
+    .toc a:hover {
+      color: var(--green-700);
+
+      background: var(--green-50);
+
+      text-decoration: none;
+    }
+
+    main {
+      min-width: 0;
+
+      background: var(--white);
+
+      border: 1px solid var(--border);
+
+      border-radius: 22px;
+
+      box-shadow: var(--shadow);
+
+      padding: clamp(28px, 5vw, 58px);
+    }
+
+    .intro {
+      padding: 22px 24px;
+
+      margin-bottom: 38px;
+
+      border-left: 4px solid var(--green-500);
+
+      border-radius: 0 12px 12px 0;
+
+      background: var(--green-50);
+
+      color: #435149;
+    }
+
+    section {
+      scroll-margin-top: 25px;
+    }
+
+    section + section {
+      margin-top: 42px;
+
+      padding-top: 42px;
+
+      border-top: 1px solid var(--border);
+    }
+
+    h2 {
+      color: var(--green-900);
+
+      font-size: clamp(1.35rem, 3vw, 1.7rem);
+
+      line-height: 1.25;
+
+      letter-spacing: -0.02em;
+
+      margin-bottom: 15px;
+    }
+
+    h2::before {
+      content: "";
+
+      display: inline-block;
+
+      width: 7px;
+      height: 7px;
+
+      margin: 0 9px 3px 0;
+
+      border-radius: 50%;
+
+      background: var(--green-500);
+    }
+
+    p {
+      margin-bottom: 14px;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    ul {
+      margin: 14px 0 0 22px;
+    }
+
+    li {
+      margin-bottom: 9px;
+
+      padding-left: 4px;
+    }
+
+    li::marker {
+      color: var(--green-600);
+    }
+
+    .highlight {
+      margin-top: 18px;
+
+      padding: 20px 22px;
+
+      background: #f8fcf9;
+
+      border: 1px solid var(--border);
+
+      border-radius: 14px;
+    }
+
+    .highlight strong {
+      color: var(--green-900);
+    }
+
+    .delete-card {
+      margin-top: 24px;
+
+      padding: 26px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--green-50),
+          #ffffff
+        );
+
+      border: 1px solid var(--border);
+
+      border-radius: 16px;
+    }
+
+    .delete-button {
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      margin-top: 12px;
+
+      padding: 13px 20px;
+
+      border-radius: 10px;
+
+      background: var(--green-700);
+
+      color: #ffffff;
+
+      font-weight: 700;
+
+      transition: 0.2s ease;
+    }
+
+    .delete-button:hover {
+      background: var(--green-800);
+
+      color: #ffffff;
+
+      text-decoration: none;
+
+      transform: translateY(-1px);
+    }
+
+    .note {
+      margin-top: 16px;
+
+      color: var(--muted);
+
+      font-size: 0.92rem;
+    }
+
+    .contact-card {
+      margin-top: 18px;
+
+      padding: 22px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--green-50),
+          #ffffff
+        );
+
+      border: 1px solid var(--border);
+
+      border-radius: 14px;
+    }
+
+    .contact-card strong {
+      color: var(--green-900);
+    }
+
+    .email {
+      display: inline-block;
+
+      margin-top: 5px;
+
+      font-weight: 700;
+
+      word-break: break-word;
+    }
+
+    footer {
+      padding: 30px 20px 45px;
+
+      text-align: center;
+
+      color: var(--muted);
+
+      font-size: 0.9rem;
+    }
+
+    footer strong {
+      color: var(--green-800);
+    }
+
+    @media (max-width: 820px) {
+
+      header {
+        padding: 52px 20px 78px;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .toc {
+        position: static;
+      }
+
+      .toc ul {
+        display: grid;
+
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
+        gap: 4px;
+      }
+
+      .toc li + li {
+        margin-top: 0;
+      }
+    }
+
+    @media (max-width: 560px) {
+
+      .page {
+        width: min(100% - 20px, 1120px);
+
+        margin-top: -32px;
+      }
+
+      main {
+        padding: 25px 20px;
+
+        border-radius: 17px;
+      }
+
+      .toc {
+        padding: 17px;
+      }
+
+      .toc ul {
+        display: block;
+      }
+
+      .toc li + li {
+        margin-top: 3px;
+      }
+
+      section + section {
+        margin-top: 32px;
+
+        padding-top: 32px;
+      }
+
+      .delete-button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========================================
+       HEADER
+  ======================================== -->
+
+  <header>
+
+    <div class="header-content">
+
+      <div class="brand">
+
+        <div
+          class="frog-icon"
+          aria-hidden="true"
+        >
+          🐸
+        </div>
+
+        <span>Tree Frog</span>
+
+      </div>
+
+      <h1>
+        Detalhes do jogo
+      </h1>
+
+      <p>
+        Informações sobre o Tree Frog, seus recursos,
+        o uso do Google Play Games Services e como
+        gerenciar ou excluir os dados relacionados
+        ao jogo.
+      </p>
+
+      <span class="updated">
+        Última atualização: 14 de setembro de 2026
+      </span>
+
+    </div>
+
+  </header>
+
+
+  <!-- ========================================
+       CONTENT
+  ========================================= -->
+
+  <div class="page">
+
+    <div class="layout">
+
+
+      <!-- ======================================
+           TABLE OF CONTENTS
+      ======================================= -->
+
+      <nav
+        class="toc"
+        aria-label="Índice"
+      >
+
+        <div class="toc-title">
+          Neste documento
+        </div>
+
+        <ul>
+
+          <li>
+            <a href="#sobre">
+              Sobre o Tree Frog
+            </a>
+          </li>
+
+          <li>
+            <a href="#google-play-games">
+              Google Play Games
+            </a>
+          </li>
+
+          <li>
+            <a href="#ranking">
+              Ranking
+            </a>
+          </li>
+
+          <li>
+            <a href="#dados">
+              Dados utilizados
+            </a>
+          </li>
+
+          <li>
+            <a href="#armazenamento">
+              Armazenamento
+            </a>
+          </li>
+
+          <li>
+            <a href="#terceiros">
+              Serviços de terceiros
+            </a>
+          </li>
+
+          <li>
+            <a href="#privacidade">
+              Privacidade
+            </a>
+          </li>
+
+          <li>
+            <a href="#exclusao">
+              Exclusão de conta e dados
+            </a>
+          </li>
+
+          <li>
+            <a href="#contato">
+              Contato
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+
+      <!-- ======================================
+           MAIN
+      ======================================= -->
+
+      <main>
+
+
+        <!-- INTRO -->
+
+        <div class="intro">
+
+          <strong>Bem-vindo ao Tree Frog.</strong>
+
+          O Tree Frog utiliza o Google Play Games Services
+          para autenticação e para oferecer recursos de
+          classificação por meio de Leaderboards. Esta
+          página apresenta informações sobre o jogo e
+          explica como gerenciar ou excluir os dados
+          relacionados ao Google Play Games.
+
+        </div>
+
+
+        <!-- ====================================
+             1. SOBRE
+        ===================================== -->
+
+        <section id="sobre">
+
+          <h2>
+            Sobre o Tree Frog
+          </h2>
+
+          <p>
+            O <strong>Tree Frog</strong> é um jogo
+            desenvolvido por <strong>Vastaluz</strong>.
+          </p>
+
+          <p>
+            O jogo possui integração com o Google Play
+            Games Services para oferecer recursos de
+            autenticação e classificação entre jogadores.
+          </p>
+
+          <p>
+            O Tree Frog não utiliza Firebase e não
+            mantém um backend ou banco de dados próprio
+            para armazenar contas de jogadores ou
+            pontuações dos Leaderboards.
+          </p>
+
+        </section>
+
+
+        <!-- ====================================
+             2. GOOGLE PLAY GAMES
+        ===================================== -->
+
+        <section id="google-play-games">
+
+          <h2>
+            Google Play Games Services
+          </h2>
+
+          <p>
+            O Tree Frog utiliza o
+            <strong>Google Play Games Services</strong>,
+            serviço fornecido pelo Google, para recursos
+            relacionados à identidade do jogador,
+            autenticação e Leaderboards.
+          </p>
+
+          <p>
+            A autenticação é realizada pelos mecanismos
+            disponibilizados pelo Google Play Games
+            Services. O Tree Frog não solicita nem
+            armazena a senha da conta Google do jogador.
+          </p>
+
+          <p>
+            O Google Play Games Services pode processar
+            informações necessárias para disponibilizar
+            seus recursos, de acordo com os termos e a
+            política de privacidade do Google.
+          </p>
+
+          <div class="highlight">
+
+            <strong>
+              Importante:
+            </strong>
+
+            os dados processados diretamente pelo Google
+            Play Games Services são administrados pelo
+            Google e estão sujeitos às políticas e
+            controles disponibilizados pelo próprio Google.
+
+          </div>
+
+        </section>
+
+
+        <!-- ====================================
+             3. RANKING
+        ===================================== -->
+
+        <section id="ranking">
+
+          <h2>
+            Ranking e Leaderboards
+          </h2>
+
+          <p>
+            O Tree Frog utiliza os Leaderboards do Google
+            Play Games Services para registrar e exibir
+            pontuações dos jogadores.
+          </p>
+
+          <p>
+            Quando uma pontuação é enviada ao ranking,
+            ela é encaminhada ao Google Play Games
+            Services juntamente com as informações
+            necessárias para associá-la ao jogador
+            autenticado.
+          </p>
+
+          <p>
+            O Google Play Games Services pode apresentar
+            o nome, identidade ou outras informações de
+            perfil disponibilizadas pelo serviço junto
+            às classificações, conforme as configurações
+            aplicáveis.
+          </p>
+
+          <p>
+            O Tree Frog não possui um banco de dados
+            próprio contendo uma cópia dessas pontuações.
+          </p>
+
+        </section>
+
+
+        <!-- ====================================
+             4. DADOS
+        ===================================== -->
+
+        <section id="dados">
+
+          <h2>
+            Dados utilizados pelo jogo
+          </h2>
+
+          <p>
+            Para utilizar os recursos do Google Play
+            Games Services, determinadas informações
+            podem ser disponibilizadas ao jogo ou
+            processadas pelo próprio serviço.
+          </p>
+
+          <p>
+            Dependendo dos recursos utilizados e das
+            configurações da conta, isso pode incluir
+            informações como:
+          </p>
+
+          <ul>
+
+            <li>
+              identificador do jogador;
+            </li>
+
+            <li>
+              nome ou nome de jogador disponibilizado
+              pelo Google Play Games;
+            </li>
+
+            <li>
+              informações necessárias para autenticação;
+            </li>
+
+            <li>
+              pontuações enviadas aos Leaderboards;
+            </li>
+
+            <li>
+              informações técnicas necessárias ao
+              funcionamento do serviço;
+            </li>
+
+            <li>
+              informações relacionadas ao dispositivo
+              e à segurança do serviço.
+            </li>
+
+          </ul>
+
+          <p style="margin-top: 18px;">
+
+            O Google poderá processar outras informações
+            nos seus próprios sistemas para fornecer,
+            proteger, manter e melhorar o Google Play
+            Games Services, de acordo com as políticas
+            aplicáveis do Google.
+
+          </p>
+
+        </section>
+
+
+        <!-- ====================================
+             5. ARMAZENAMENTO
+        ===================================== -->
+
+        <section id="armazenamento">
+
+          <h2>
+            Armazenamento dos dados
+          </h2>
+
+          <p>
+            O Tree Frog não possui um servidor ou banco
+            de dados próprio para armazenar contas,
+            perfis de jogadores ou pontuações dos
+            Leaderboards.
+          </p>
+
+          <p>
+            Os dados necessários aos Leaderboards são
+            processados e armazenados pelos serviços do
+            Google responsáveis por essa funcionalidade.
+          </p>
+
+          <p>
+            O aplicativo poderá armazenar determinadas
+            configurações ou informações localmente no
+            dispositivo quando isso for necessário ao
+            funcionamento do jogo.
+          </p>
+
+          <div class="highlight">
+
+            <strong>
+              Em resumo:
+            </strong>
+
+            o Tree Frog não mantém uma cópia independente
+            das informações do Google Play Games Services
+            em um servidor próprio.
+
+          </div>
+
+        </section>
+
+
+        <!-- ====================================
+             6. TERCEIROS
+        ===================================== -->
+
+        <section id="terceiros">
+
+          <h2>
+            Serviços de terceiros
+          </h2>
+
+          <p>
+            O principal serviço de terceiros utilizado
+            pelo Tree Frog para autenticação e ranking é
+            o Google Play Games Services.
+          </p>
+
+          <p>
+            O Google administra esse serviço e possui
+            suas próprias políticas, termos e mecanismos
+            de gerenciamento de dados.
+          </p>
+
+          <p>
+            Para informações detalhadas sobre como o
+            Google trata dados nos seus serviços, consulte
+            a
+            <a
+              href="https://policies.google.com/privacy?hl=pt-BR"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Política de Privacidade do Google
+            </a>.
+          </p>
+
+        </section>
+
+
+        <!-- ====================================
+             7. PRIVACIDADE
+        ===================================== -->
+
+        <section id="privacidade">
+
+          <h2>
+            Privacidade e segurança
+          </h2>
+
+          <p>
+            O Tree Frog não vende, aluga ou comercializa
+            informações pessoais dos jogadores.
+          </p>
+
+          <p>
+            O jogo não possui acesso à senha da conta
+            Google utilizada para autenticação.
+          </p>
+
+          <p>
+            O tratamento realizado diretamente pelo
+            Google Play Games Services está sujeito aos
+            mecanismos de segurança, políticas e
+            controles do Google.
+          </p>
+
+          <p>
+            Nenhum sistema conectado à internet pode
+            garantir segurança absoluta. O Tree Frog
+            procura utilizar os mecanismos oficiais
+            disponibilizados pelas plataformas para
+            proteger as funcionalidades relacionadas
+            à autenticação e aos rankings.
+          </p>
+
+        </section>
+
+
+        <!-- ====================================
+             8. EXCLUSÃO
+        ===================================== -->
+
+        <section id="exclusao">
+
+          <h2>
+            Exclusão de conta e dados
+          </h2>
+
+          <p>
+            O Tree Frog utiliza a conta do Google Play
+            Games Services para autenticação e para
+            recursos de ranking. Não existe uma conta
+            independente do Tree Frog armazenada em um
+            servidor próprio.
+          </p>
+
+          <p>
+            Para excluir os dados do Google Play Games
+            relacionados ao Tree Frog, o usuário deve
+            utilizar as ferramentas oficiais fornecidas
+            pelo Google.
+          </p>
+
+          <div class="delete-card">
+
+            <strong>
+              Solicitar exclusão dos dados do Google Play Games
+            </strong>
+
+            <p style="margin-top: 10px;">
+
+              Acesse a página oficial do Google para
+              gerenciar ou excluir seu perfil e os dados
+              relacionados aos jogos.
+
+            </p>
+
+            <a
+              class="delete-button"
+              href="https://support.google.com/googleplay/answer/9130646?hl=pt-BR"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Gerenciar ou excluir dados
+            </a>
+
+            <p class="note">
+
+              A página acima é mantida pelo Google.
+              Dependendo das opções disponíveis para a
+              conta e do funcionamento do serviço, o
+              usuário poderá excluir os dados de um jogo
+              específico ou os dados do perfil do Google
+              Play Games.
+
+            </p>
+
+          </div>
+
+          <p style="margin-top: 24px;">
+
+            Como o Tree Frog não mantém uma cópia
+            independente das informações do Google Play
+            Games Services em servidores próprios, não há
+            uma conta ou um banco de dados próprio do
+            desenvolvedor que precise ser excluído
+            separadamente.
+
+          </p>
+
+          <p>
+
+            A exclusão ou alteração do perfil do Google
+            Play Games poderá afetar o acesso aos recursos
+            de autenticação, ranking e outras funcionalidades
+            vinculadas ao serviço.
+
+          </p>
+
+          <p>
+
+            Alguns dados poderão permanecer nos sistemas
+            do Google quando houver necessidade de
+            cumprimento de obrigações legais, segurança,
+            prevenção de fraude ou outras finalidades
+            permitidas pelas políticas aplicáveis do Google.
+
+          </p>
+
+          <div class="highlight">
+
+            <strong>
+              Importante:
+            </strong>
+
+            a solicitação de exclusão dos dados processados
+            pelo Google Play Games deve ser realizada por
+            meio dos mecanismos oficiais do Google.
+
+          </div>
+
+        </section>
+
+
+        <!-- ====================================
+             9. CONTATO
+        ===================================== -->
+
+        <section id="contato">
+
+          <h2>
+            Contato
+          </h2>
+
+          <p>
+            Se você tiver dúvidas sobre o Tree Frog,
+            esta página, privacidade ou o tratamento
+            de informações relacionado ao jogo, entre
+            em contato:
+          </p>
+
+          <div class="contact-card">
+
+            <p>
+
+              <strong>
+                Desenvolvedor:
+              </strong>
+
+              Vastaluz
+
+            </p>
+
+            <p>
+
+              <strong>
+                E-mail:
+              </strong>
+
+              <br>
+
+              <a
+                class="email"
+                href="mailto:devmodehere@gmail.com"
+              >
+                devmodehere@gmail.com
+              </a>
+
+            </p>
+
+          </div>
+
+        </section>
+
+
+      </main>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================
+       FOOTER
+  ========================================= -->
+
+  <footer>
+
+    <strong>Tree Frog</strong>
+    · Detalhes e exclusão de conta
+
+    <br>
+
+    Desenvolvido por Vastaluz
+    · Última atualização:
+    14 de setembro de 2026
+
+  </footer>
+
+</body>
+</html>
